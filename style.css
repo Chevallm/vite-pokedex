@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto&display=swap');
+
+:root {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+    font-family: Lato, serif;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.pokemon-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 10px;
+}
+
+.pokemon-square {
+    width: 10%;
+    background-color: #ecf0f1;
+    border: 3px solid rgba(246, 229, 141, .5);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.pokemon-square:hover {
+    border: 3px solid rgba(240, 147, 43, 1);
+    cursor: pointer;
+}
+
+.pokemon-square .pokemon-sprite {
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.pokemon-square:hover .pokemon-sprite {
+    transform: scale(1.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+.pokemon-square {
+    color: black;
+}
+
+.type {
+    font-size: .8em;
+    padding: 5px;
+    border-radius: 2px;
+    color: white;
+}
+
+.Water { background-color: RGB(99, 144, 240); }
+.Steel { background-color: RGB(183, 183, 206); }
+.Rock { background-color: RGB(182, 161, 54); }
+.Psychic { background-color: RGB(249, 85, 135); }
+.Poison { background-color: RGB(163, 62, 161); }
+.Normal { background-color: RGB(168, 167, 122); }
+.Ice { background-color: RGB(150, 217, 214); }
+.Ground { background-color: RGB(226, 191, 101); }
+.Grass { background-color: RGB(122, 199, 76); }
+.Ghost { background-color: RGB(115, 87, 151); }
+.Flying { background-color: RGB(169, 143, 243); }
+.Fire { background-color: RGB(238, 129, 48); }
+.Fighting { background-color: RGB(194, 46, 40); }
+.Fairy { background-color: RGB(214, 133, 173); }
+.Electric { background-color: RGB(247, 208, 44); }
+.Dragon { background-color: RGB(111, 53, 252); }
+.Dark { background-color: RGB(112, 87, 70); }
+.Bug { background-color: RGB(166, 185, 26); }
+
+@keyframes fade-in-left {
+    from {
+        width: 200%;
+        margin-left: 100%;
+    }
+
+    to {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@keyframes fade-in-right {
+    from {
+        width: 200%;
+        margin-left: 0%;
+    }
+
+    to {
+        width: 100%;
+        margin-left: 100%;
+    }
+}
+
+.displayer {
+    position: fixed;
+    top: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    animation-name: fade-in-left;
+    animation-duration: 0.5s;
+    background-color: #ecf0f1;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.displayer .pokemon-splash {
+    max-height: 256px;
+    max-width: 256px;
+}
+
+.displayer::before {
+    background-color: red;
+    height: 100px;
+    width: 100%;
+    content: ' ';
+    animation-name: fade-in-left;
+    animation-duration: 0.5s;
+}
+.displayer::after {
+    background-color: red;
+    height: 100px;
+    width: 100%;
+    content: ' ';
+    animation-name: fade-in-right;
+    animation-duration: 0.5s;
+}
+
