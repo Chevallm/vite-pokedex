@@ -1,8 +1,9 @@
 import './style.css'
 import {pokemons} from './pokedex.js'
+import {Displayer} from "./displayer.js";
 
 const pokemonList = document.querySelector('.pokemon-list');
-const displayer = document.querySelector('.displayer');
+const displayer = new Displayer(document.querySelector('.displayer'));
 
 
 const pokemonSquare = pokemon => `<section class="pokemon-square">
@@ -16,23 +17,20 @@ const pokemonSquare = pokemon => `<section class="pokemon-square">
 
 pokemons.forEach(pokemon => {
     pokemonList.innerHTML += pokemonSquare(pokemon);
-})
+});
 
 const onPokemonSelection = pokemon => {
-
-    displayer.style.animation = 'none';
-    displayer.offsetHeight; /* trigger reflow */
-    displayer.style.animation = null;
-    displayer.classList.remove('hidden');
-    displayer.innerHTML = `<img src='/splash/${pokemon['#']}.png' class="pokemon-splash">`;
+    displayer.resetAnimation();
+    displayer.show()
+    displayer.setImage(pokemon['#']);
     setTimeout(() => {
-        displayer.classList.add('hidden');
+        if (displayer.isVisible) {
+            //displayer.hide();
+            displayer.resetAnimation();
+        }
     }, 2000)
-}
+};
 
 document.querySelectorAll('.pokemon-square').forEach((element, index) => element.addEventListener('click', () => {
     onPokemonSelection(pokemons[index])
 }));
-displayer.addEventListener('click', () => {
-    displayer.classList.add('hidden');
-})

@@ -166,21 +166,24 @@ button:focus-visible {
 .displayer {
     position: fixed;
     top: 200px;
-    width: 100%;
+    left: 0;
+    width: 0%;
     display: flex;
     justify-content: center;
     align-content: center;
-    animation-name: fade-in-left;
-    animation-duration: 0.5s;
     background-color: #ecf0f1;
     flex-direction: column;
     align-items: center;
+    visibility: visible;
+
+    animation-name: fade-in-left;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
 }
 
-.hidden {
-    visibility: hidden;
-    width: 0;
-    height: 0;
+.shown {
+    visibility: visible;
+    width: 100%;
 }
 
 .displayer .pokemon-splash {
@@ -188,20 +191,16 @@ button:focus-visible {
     max-width: 256px;
 }
 
-.displayer::before {
+.displayer.shown::before, .displayer.shown::after {
     background-color: red;
-    height: 100px;
+    height: 20px;
     width: 100%;
     content: ' ';
-    animation-name: fade-in-left;
-    animation-duration: 0.5s;
 }
-.displayer::after {
-    background-color: red;
-    height: 100px;
-    width: 100%;
-    content: ' ';
-    animation-name: fade-in-right;
-    animation-duration: 0.5s;
+.displayer.shown::before {
+    margin-bottom: 40px;
+}
+.displayer.shown::after {
+    margin-top: 40px;
 }
 
